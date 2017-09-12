@@ -1,0 +1,4 @@
+platform-proxy-aws-admin@0.1.0 D:\go\src\github.com\off-sync\platform-proxy-aws-admin
++-- jquery@3.2.1 
+`-- UNMET PEER DEPENDENCY popper.js@^1.11.0
+
