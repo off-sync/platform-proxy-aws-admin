@@ -86,6 +86,12 @@
             "resources": [
               "css/bootstrap.css"
             ]
+          },
+          {
+            "name": "aurelia-fetch-client",
+            "main": "aurelia-fetch-client",
+            "path": "../node_modules/aurelia-fetch-client/dist/amd",
+            "resources": []
           }
         ]
       }
