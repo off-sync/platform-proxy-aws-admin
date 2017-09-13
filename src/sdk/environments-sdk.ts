@@ -1,6 +1,6 @@
 import {HttpClient} from 'aurelia-fetch-client';
 
-export class ClustersSdk {
+export class EnvironmentsSdk {
   private httpClient: HttpClient
 
   constructor() {
@@ -16,10 +16,10 @@ export class ClustersSdk {
     });
   }
 
-  listClusters() {
+  listEnvironment() {
     return this.httpClient
-      .fetch("api/clusters")
+      .fetch("api/environments")
       .then(response => response.json())
-      .then(data => data.Clusters);
+      .then(data => data.Environments);
   }
 }

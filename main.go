@@ -7,21 +7,21 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type ListClusters struct {
-	Clusters []string
+type listEnvironments struct {
+	Environments []string
 }
 
 func main() {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/api/clusters", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/api/environments", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 
-		listClusters := &ListClusters{
-			Clusters: []string{"off-sync-qa", "off-sync-live"},
+		listEnvironments := &listEnvironments{
+			Environments: []string{"off-sync-qa", "off-sync-live"},
 		}
 
-		json.NewEncoder(w).Encode(listClusters)
+		json.NewEncoder(w).Encode(listEnvironments)
 	})
 
 	r.PathPrefix("/scripts/").Handler(http.StripPrefix("/scripts", http.FileServer(http.Dir("scripts"))))
