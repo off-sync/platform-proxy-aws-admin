@@ -1,0 +1,15 @@
+<template>
+  <h3>${Name} <small>environment</small></h3>
+  <h4>Services</h4>
+  <div class="card-deck">
+    <div repeat.for="service of Services" class="card mb-3" style="width: 20rem;">
+      <div class="card-body">
+        <h4 class="card-title">${service}</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="card-footer">
+        <a route-href="route: serviceDetail; params.bind: { environmentName: Name, serviceName: service }" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+  </div>
+</template>

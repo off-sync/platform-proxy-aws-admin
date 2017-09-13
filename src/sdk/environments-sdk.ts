@@ -22,4 +22,10 @@ export class EnvironmentsSdk {
       .then(response => response.json())
       .then(data => data.Environments);
   }
+
+  describeEnvironment(name: string) {
+    return this.httpClient
+      .fetch("api/environments/" + name)
+      .then(response => response.json());
+  }
 }

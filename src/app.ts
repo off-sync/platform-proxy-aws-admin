@@ -10,6 +10,8 @@ export class App {
     config.title = this.title;
     config.map([
       { route: ['', 'environments'], name: 'environments', moduleId: 'environments/index', title: 'Environments', nav: true },
+      { route: 'environments/:name', name: 'environmentDetail', moduleId: 'environments/detail' },
+      { route: 'environments/:environmentName/services/:serviceName', name: 'serviceDetail', moduleId: 'services/detail' },
     ]);
   }
 }
