@@ -1,0 +1,19 @@
+<template>
+  <require from="font-awesome/css/font-awesome.css"></require>
+  <div class="card mb-3 text-white"
+    style="width: 20rem;">
+    <div class="card-header ${Service.Type == 'server' ? 'bg-success' : (Service.Type == 'system' ? 'bg-dark' : 'bg-secondary')}">
+      <h4 class="card-title">${Service.Name}</h4>
+      <h6 class="card-subtitle mb-2">${Service.Type} service</h6>
+    </div>
+    <div class="card-body">
+      <a repeat.for="serverURL of Service.ServerURLs" href.bind="serverURL" class="card-link" target="_blank">${serverURL}</a>
+    </div>
+    <div class="card-footer">
+      <a route-href="route: serviceDetail; params.bind: { environmentName: EnvironmentName, serviceName: ServiceName }" class="btn btn-info">Details</a>
+      <a route-href="route: serviceDelete; params.bind: { environmentName: EnvironmentName, serviceName: ServiceName }" class="btn btn-danger pull-right">
+        <i class="fa fa-trash" aria-hidden="true"></i> Delete
+      </a>
+    </div>
+  </div>
+</template>
