@@ -92,10 +92,20 @@
             "main": "aurelia-fetch-client",
             "path": "../node_modules/aurelia-fetch-client/dist/amd",
             "resources": []
+          },
+          {
+            "name": "font-awesome",
+            "path": "../node_modules/font-awesome",
+            "resources": [
+              "css/font-awesome.css"
+            ]
           }
         ]
       }
     ],
+    "copyFiles": {
+      "node_modules/font-awesome/fonts/*": "font-awesome/fonts"
+    },
     "loader": {
       "type": "require",
       "configTarget": "vendor-bundle.js",
