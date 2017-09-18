@@ -28,4 +28,10 @@ export class EnvironmentsSdk {
       .fetch("api/environments/" + name)
       .then(response => response.json());
   }
+
+  describeService(environmentName: string, serviceName: string) {
+    return this.httpClient
+      .fetch("api/environments/" + environmentName + "/services/" + serviceName)
+      .then(response => response.json());
+  }
 }

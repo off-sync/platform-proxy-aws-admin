@@ -12,6 +12,7 @@ export class App {
       { route: ['', 'environments'], name: 'environments', moduleId: 'environments/index', title: 'Environments', nav: true },
       { route: 'environments/:name', name: 'environmentDetail', moduleId: 'environments/detail' },
       { route: 'environments/:environmentName/services/:serviceName', name: 'serviceDetail', moduleId: 'services/detail' },
+      { route: 'environments/:environmentName/services/:serviceName/delete', name: 'serviceDelete', moduleId: 'services/detail' },
     ]);
   }
 }

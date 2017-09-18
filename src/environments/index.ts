@@ -1,4 +1,4 @@
-import {EnvironmentsSdk} from 'sdk/environments-sdk';
+import {EnvironmentsSdk} from '../sdk/environments-sdk';
 import {inject} from 'aurelia-framework';
 
 @inject(EnvironmentsSdk)

@@ -28,6 +28,12 @@ type describeEnvironment struct {
 	Services []string
 }
 
+type describeService struct {
+	Name       string
+	Type       string
+	ServerURLs []string
+}
+
 func init() {
 	if cfgFile != "" {
 		// Use config file from the flag.
@@ -114,6 +120,31 @@ func main() {
 		}
 
 		json.NewEncoder(w).Encode(describeEnvironment)
+	})
+
+	r.HandleFunc("/api/environments/{name}/services/{serviceName}", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+
+		vars := mux.Vars(r)
+		serviceName := vars["serviceName"]
+
+		service, err := serviceRepository.DescribeService(serviceName)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		describeService := &describeService{
+			Name:       service.Name,
+			Type:       string(service.Type),
+			ServerURLs: make([]string, len(service.Servers)),
+		}
+
+		for i, url := range service.Servers {
+			describeService.ServerURLs[i] = url.String()
+		}
+
+		json.NewEncoder(w).Encode(describeService)
 	})
 
 	r.PathPrefix("/scripts/").Handler(http.StripPrefix("/scripts", http.FileServer(http.Dir("scripts"))))
